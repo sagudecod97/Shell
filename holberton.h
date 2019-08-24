@@ -8,7 +8,7 @@
 
 char * get_Line(void);
 char ** _strtok1(char *buff);
-char ** _strtok2(char *buff);
+char ** _strtok2(char *path);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *str);
 char *strcomp(char *envi);
