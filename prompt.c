@@ -9,10 +9,10 @@
  * Return: 0 on Success
  */
 
-int main(int argc, char **argv, char **env)
+int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv, char **env)
 {
 	size_t size = 0;
-	char *buff, **argv;
+	char *buff, **argum;
 	int i = 0, j;
 	pid_t pid;
 
@@ -27,21 +27,21 @@ int main(int argc, char **argv, char **env)
 		fflush(stdin);
 		getline(&buff, &size, stdin);
 
-		argv = malloc(sizeof(char *) * 1024);
+		argum = malloc(sizeof(char *) * 1024);
 
-		if (argv == NULL)
+		if (argum == NULL)
 		{
-			free(argv);
+			free(argum);
 			perror("Error ");
 		};
 
-		argv = _strtok(buff);
-
+		argum = _strtok1(buff);
+		printf("%s\n", argum[0]);	
 		pid = fork();
 
 		if (pid == 0)
 		{
-			if (execve(argv[0], argv, NULL) == -1)
+			if (execve(argum[0], argum, NULL) == -1)
 			{
 				perror("./shell");
 			}
