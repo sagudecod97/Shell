@@ -11,23 +11,26 @@
 
 int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv, char **env)
 {
-	size_t size = 0;
-	char *buff, **argum;
-	int i = 0, j;
+	size_t size = 69;
+	char *buff, **argum, **path, **pathWhile;
+	char **pathPrint, *dest, **pathOut;
+	int i, j;
 	pid_t pid;
 
-	while (EOF)
+	pathOut = getPath(env);
+
+	while (EOF) /** Wait till the signal EOF **/
 	{
-		buff = malloc(sizeof(char) * size);
+		buff = malloc(sizeof(char) * size); /** alloc memory to the buff **/
 		if (buff == NULL)
 		{
 			free(buff);
 		};
 		printf("$ ");
-		fflush(stdin);
-		getline(&buff, &size, stdin);
+		fflush(stdin); /** clean the stdin **/
+		getline(&buff, &size, stdin); /** Get what the user types **/
 
-		argum = malloc(sizeof(char *) * 1024);
+		argum = malloc(sizeof(char *) * 1024); /** Alloc the memory to every pointer **/
 
 		if (argum == NULL)
 		{
@@ -35,21 +38,19 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv,
 			perror("Error ");
 		};
 
-		argum = _strtok1(buff);
-		printf("%s\n", argum[0]);	
-		pid = fork();
+		argum = _strtok1(buff); /** Returns an array of the tokens of buff **/
+		path = pathOut;
+		/**pathWhile = path;**/
+		/**pathPrint = cocaComand(argum[0], path);**/
 
-		if (pid == 0)
+		i = 0;
+
+		while (path[i])
 		{
-			if (execve(argum[0], argum, NULL) == -1)
-			{
-				perror("./shell");
-			}
-			exit(98);
-		} else if (pid < 0)
-			perror("./shell");
-		else
-			wait(&pid);
+			/**dest = strcat(pathWhile[i], argum[0]);**/
+			printf("%s\n", path[i]);
+			i++;
+		};
 	}
 
 }

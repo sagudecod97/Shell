@@ -4,7 +4,7 @@ char **cocaComand(char *command, char ** arrEnv)
 {
 	int lenArr = 1, lenComm = 0;
 	int i, j, p, numPtsArr = 0;
-	char **retArr, *ptrRet;
+	char **retArr;
 
 	lenComm = _strLen(command);
     
@@ -33,7 +33,7 @@ char **cocaComand(char *command, char ** arrEnv)
 	};
 
 	retArr[i] = NULL;
-    
+
 	return (retArr);
 }
 

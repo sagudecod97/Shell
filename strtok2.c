@@ -11,7 +11,7 @@ char **_strtok2 (char *path)
 	int i = 0, sizeCopy = 0, tokCuantity = 0;
 	char *token, **arr_TOK, *copy;
 
-	sizeCopy = _strLen (buff);
+	sizeCopy = _strLen (path);
 	copy = malloc (sizeof (char) * (sizeCopy + 1));
 
 	if (copy == NULL)
@@ -20,7 +20,7 @@ char **_strtok2 (char *path)
 		perror ("Error: ");
 	};
 
-	copy = _strcpy (copy, buff);
+	copy = _strcpy (copy, path);
 	token = strtok (copy, ":");
 
 	while (token)
@@ -32,7 +32,7 @@ char **_strtok2 (char *path)
 	free (copy);
 
 	arr_TOK = (char **) malloc (sizeof (char *) * tokCuantity);
-	token = strtok (buff, ":");
+	token = strtok (path, ":");
 
 	while (token)
 	{
