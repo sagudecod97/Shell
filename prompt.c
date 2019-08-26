@@ -5,11 +5,13 @@
 
 /**
  * main - Entry point
- *
+ * @argc: Unused variable
+ * @argv: Unused variable
+ * @env: Enviroment varible
  * Return: 0 on Success
  */
 
-int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv, char **env)
+int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv, char **env)
 {
 	size_t size = 69;
 	char *buff, **argum, **path, **pathWhile;
@@ -19,7 +21,7 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv,
 
 	pathOut = getPath(env);
 
-	while (EOF || out != 0) /** Wait till the signal EOF **/
+	while (EOF) /** Wait till the signal EOF **/
 	{
 		buff = malloc(sizeof(char) * size); /** alloc memory to the buff **/
 		if (buff == NULL)
@@ -29,16 +31,15 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv,
 		write(1, "$ ", 3);
 		fflush(stdin); /**clean the stdin**/
 		c = getline(&buff, &size, stdin); /** Get what the user types **/
-		if (c < 0)
-      		{
+		if (c <= 0)
+		{
 			if (isatty(STDIN_FILENO) != 0 && isatty(STDOUT_FILENO) != 0)
 				putchar('\n');
 			free(buff);
 			break;
 		};
 
-		argum = malloc(sizeof(char *) * 1024); /** Alloc the memory to every pointer **/
-
+		argum = malloc(sizeof(char *) * 1024); /** Alloc the memory**/
 		if (argum == NULL)
 		{
 			free(argum);
@@ -48,11 +49,8 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv,
 		argum = _strtok1(buff); /** Returns an array of the tokens of buff **/
 		path = pathOut;
 		pathPrint = cocaCommand(argum[0], path);
-
 		if (forky(argum, buff, pathPrint, env) == -1)
-		{
 			perror("./shell");
-		}
 	}
 
 }
