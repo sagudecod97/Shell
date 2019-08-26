@@ -1,6 +1,6 @@
 #include "holberton.h"
 
-char **cocaComand(char *command, char ** arrEnv)
+char **cocaCommand(char *command, char **arrEnv)
 {
 	int lenArr = 1, lenComm = 0;
 	int i, j, p, numPtsArr = 0;

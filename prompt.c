@@ -41,16 +41,20 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv,
 		argum = _strtok1(buff); /** Returns an array of the tokens of buff **/
 		path = pathOut;
 		/**pathWhile = path;**/
-		/**pathPrint = cocaComand(argum[0], path);**/
+		pathPrint = cocaCommand(argum[0], path);
 
-		i = 0;
+		if (forky(argum, buff, pathPrint) == -1)
+		{
+			perror("./shell");
+		}
+
+		/**i = 0;
 
 		while (path[i])
 		{
-			/**dest = strcat(pathWhile[i], argum[0]);**/
-			printf("%s\n", path[i]);
+			printf("%s\n", pathPrint[i]);
 			i++;
-		};
+		};**/
 	}
 
 }

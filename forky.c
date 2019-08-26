@@ -11,7 +11,7 @@
 int forky(char **argum, char *buff, char **path)
 {
 	pid_t pid;
-
+	int i = 0;
 	pid = fork();
 
 	if (pid == 0)
@@ -25,9 +25,13 @@ int forky(char **argum, char *buff, char **path)
 		} 
 		else
 		{
-			while (access(path[i], X_OK | F_OK) != 0)
+			while (access(path[i], X_OK | F_OK) < 0)
 				i++;
-			execve();
+
+			if(execve(path[i], argum, NULL) == -1)
+			{
+				perror("./shell");
+			};
 		}
 		return(-1);
 	} else if (pid < 0)

@@ -16,5 +16,6 @@ char *arrRet(char **env);
 char **cocaCommand(char *command, char **arrEnv);
 char **getPath(char **env);
 char *_strcat(char *dest, char *src);
+int forky(char **argum, char *buff, char **path);
 
 #endif 
