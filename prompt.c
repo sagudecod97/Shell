@@ -14,21 +14,28 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char **argv,
 	size_t size = 69;
 	char *buff, **argum, **path, **pathWhile;
 	char **pathPrint, *dest, **pathOut;
-	int i, j;
+	int i, j, c = 0, out = 0;
 	pid_t pid;
 
 	pathOut = getPath(env);
 
-	while (EOF) /** Wait till the signal EOF **/
+	while (EOF || out != 0) /** Wait till the signal EOF **/
 	{
 		buff = malloc(sizeof(char) * size); /** alloc memory to the buff **/
 		if (buff == NULL)
 		{
 			free(buff);
 		};
-		printf("$ ");
-		fflush(stdin); /** clean the stdin **/
-		getline(&buff, &size, stdin); /** Get what the user types **/
+		write(1, "$ ", 3);
+		fflush(stdin); /**clean the stdin**/
+		c = getline(&buff, &size, stdin); /** Get what the user types **/
+		if (c < 0)
+      		{
+			if (isatty(STDIN_FILENO) != 0 && isatty(STDOUT_FILENO) != 0)
+				putchar('\n');
+			free(buff);
+			break;
+		};
 
 		argum = malloc(sizeof(char *) * 1024); /** Alloc the memory to every pointer **/
 
