@@ -21,5 +21,6 @@ char *_strcat(char *dest, char *src);
 int forky(char **argum, char *buff, char **path, char **env);
 int exitEnvBuilt(char **env, char *argum);
 int _strcmp(char *s1, char *s2);
+int nonInteractive(char **env);
 
 #endif 
