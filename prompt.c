@@ -19,8 +19,13 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	pid_t pid;
 
 	pathOut = getPath(env);
+	if (isatty(STDIN_FILENO) != 1)
+	{
+		nonInteractive(env);
+		return (0);
+	}
 
-	while (EOF) /** Wait till the signal EOF **/
+	while (c != EOF) /** Wait till the signal EOF **/
 	{
 		buff = malloc(sizeof(char) * size); /** alloc memory to the buff **/
 		if (buff == NULL)
@@ -30,26 +35,16 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		write(1, "$ ", 3);
 		fflush(stdin); /**clean the stdin**/
 		c = getline(&buff, &size, stdin); /** Get what the user types **/
-		if (c <= 0)
-		{
-			if (isatty(STDIN_FILENO) != 0 && isatty(STDOUT_FILENO) != 0)
-				putchar('\n');
-			free(buff);
-			break;
-		};
-
 		argum = malloc(sizeof(char *) * 1024); /** Alloc the memory**/
 		if (argum == NULL)
 		{
 			free(argum);
 			perror("Error ");
 		};
-
 		argum = _strtok1(buff); /** Returns an array of the tokens of buff **/
 		path = pathOut;
 		pathPrint = cocaCommand(argum[0], path);
 		if (forky(argum, buff, pathPrint, env) == -1)
 			perror("./shell");
-	}
-
+	};
 }
