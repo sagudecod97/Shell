@@ -9,7 +9,6 @@
 
 int exitEnvBuilt(char **env, char *argum)
 {
-	int res;
 	int i = 0, count = 0;
 
 	if (env == NULL || argum == NULL)

@@ -13,10 +13,9 @@
 int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 {
 	size_t size = 69;
-	char *buff, **argum, **path, **pathWhile, **envForky;
-	char **pathPrint, *dest, **pathOut, **env = environ;
-	int i, j, c = 0, out = 0;
-	pid_t pid;
+	char *buff, **argum, **path, **envForky;
+	char **pathPrint, **pathOut, **env = environ;
+	int c = 0;
 
 	envForky = env;
 	pathOut = getPath(envForky);
@@ -45,7 +44,8 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		argum = _strtok1(buff); /** Returns an array of the tokens of buff **/
 		path = pathOut;
 		pathPrint = cocaCommand(argum[0], path);
-		if (forky(argum, buff, pathPrint, env) == -1)
+		if (forky(argum, pathPrint, env) == -1)
 			perror("./shell");
 	};
+	return (0);
 }

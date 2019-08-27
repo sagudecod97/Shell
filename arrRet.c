@@ -13,7 +13,7 @@ char *arrRet (char **env)
 
 	while (env[i] != NULL)
 	{
-		if (strcomp (env[i]) != NULL)
+		if (strcomp(env[i]) != NULL)
 		{
 			ptr = strcomp (env[i]);
 			return (ptr);
