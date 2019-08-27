@@ -21,7 +21,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	pathOut = getPath(env);
 	if (isatty(STDIN_FILENO) != 1)
 	{
-		nonInteractive(env);
+		nonInteractive(pathOut);
 		return (0);
 	}
 

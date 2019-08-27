@@ -14,13 +14,6 @@ int forky(char **argum, char *buff, char **path, char **env)
 	int i = 0;
 	pid = fork();
 
-	if (strcmp(argum[0], "env") == 0)
-	{
-		if(exitEnvBuilt(env, argum[0]) == -1)
-			return (-1);
-		return (0);
-	}
-
 	if (pid == 0)
 	{
 		if (argum[0][0] == '/')
@@ -43,6 +36,13 @@ int forky(char **argum, char *buff, char **path, char **env)
 	}else
 	{
 		wait(&pid);
+	};
+
+	if (strcmp(argum[0], "env") == 0)
+	{
+		if(exitEnvBuilt(env, argum[0]) == -1)
+			return (-1);
+		return (0);
 	};
 	return (0);
 }
