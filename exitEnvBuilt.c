@@ -15,14 +15,13 @@ int exitEnvBuilt(char **env, char *argum)
 	if (env == NULL || argum == NULL)
 	{
 		return(-1);
-	}
-
+	};
 	if (_strcmp(argum, "env") == 0)
 	{
 		while (env[i] != NULL)
 		{
 			count = _strLen(env[i]);
-			while (j < count)
+			while (j <= count)
 			{
 				_putchar(env[i][j]);
 				j++;

@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+extern char **environ;
+
 char * get_Line(void);
 char ** _strtok1(char *buff);
 char ** _strtok2(char *path);

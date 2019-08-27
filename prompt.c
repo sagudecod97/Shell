@@ -7,15 +7,14 @@
  * main - Entry point
  * @argc: Unused variable
  * @argv: Unused variable
- * @env: Enviroment varible
  * Return: 0 on Success
  */
 
-int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv, char **env)
+int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 {
 	size_t size = 69;
 	char *buff, **argum, **path, **pathWhile;
-	char **pathPrint, *dest, **pathOut;
+	char **pathPrint, *dest, **pathOut, **env = environ;
 	int i, j, c = 0, out = 0;
 	pid_t pid;
 
