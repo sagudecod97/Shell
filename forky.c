@@ -38,7 +38,7 @@ int forky(char **argum, char *buff, char **path, char **env)
 		wait(&pid);
 	};
 
-	if (strcmp(argum[0], "env") == 0)
+	if ((strcmp(argum[0], "env") == 0) || (strcmp(argum[0], "exit") == 0))
 	{
 		if(exitEnvBuilt(env, argum[0]) == -1)
 			return (-1);

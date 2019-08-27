@@ -10,7 +10,7 @@
 int exitEnvBuilt(char **env, char *argum)
 {
 	int res;
-	int i = 0, j = 0, count = 0;
+	int i = 0, count = 0;
 
 	if (env == NULL || argum == NULL)
 	{
@@ -21,14 +21,16 @@ int exitEnvBuilt(char **env, char *argum)
 		while (env[i] != NULL)
 		{
 			count = _strLen(env[i]);
-			while (j <= count)
-			{
-				_putchar(env[i][j]);
-				j++;
-			};
+			write(1, env[i], count);
+			write(1, "\n", 1);
 			i++;
 		};
-	}
+	};
+	if (_strcmp(argum, "exit") == 0)
+	{
+		exit(0);
+		return (0);
+	};
 
-	return (0);
+	return (-1);
 }

@@ -13,12 +13,13 @@
 int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 {
 	size_t size = 69;
-	char *buff, **argum, **path, **pathWhile;
+	char *buff, **argum, **path, **pathWhile, **envForky;
 	char **pathPrint, *dest, **pathOut, **env = environ;
 	int i, j, c = 0, out = 0;
 	pid_t pid;
 
-	pathOut = getPath(env);
+	envForky = env;
+	pathOut = getPath(envForky);
 	if (isatty(STDIN_FILENO) != 1)
 	{
 		nonInteractive(pathOut);
